@@ -7,8 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		842E26101AA1FF3A001DA62C /* JavaWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 842E260E1AA1FF3A001DA62C /* JavaWrapper.m */; };
-		842E26131AA1FF50001DA62C /* JavaCWrapper.mm in Sources */ = {isa = PBXBuildFile; fileRef = 842E26111AA1FF50001DA62C /* JavaCWrapper.mm */; };
+		842E26101AA1FF3A001DA62C /* JavaWrapper.mm in Sources */ = {isa = PBXBuildFile; fileRef = 842E260E1AA1FF3A001DA62C /* JavaWrapper.mm */; };
 		8430A1A61A9FE10800581469 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8430A1A51A9FE10800581469 /* AppDelegate.swift */; };
 		8430A1A81A9FE10800581469 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8430A1A71A9FE10800581469 /* ViewController.swift */; };
 		8430A1AA1A9FE10800581469 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8430A1A91A9FE10800581469 /* Images.xcassets */; };
@@ -31,10 +30,8 @@
 
 /* Begin PBXFileReference section */
 		842E26061AA1FAA6001DA62C /* JavaExample-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "JavaExample-Bridging-Header.h"; sourceTree = "<group>"; };
-		842E260E1AA1FF3A001DA62C /* JavaWrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JavaWrapper.m; sourceTree = "<group>"; };
+		842E260E1AA1FF3A001DA62C /* JavaWrapper.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = JavaWrapper.mm; sourceTree = "<group>"; };
 		842E260F1AA1FF3A001DA62C /* JavaWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JavaWrapper.h; sourceTree = "<group>"; };
-		842E26111AA1FF50001DA62C /* JavaCWrapper.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = JavaCWrapper.mm; sourceTree = "<group>"; };
-		842E26121AA1FF50001DA62C /* JavaCWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JavaCWrapper.h; sourceTree = "<group>"; };
 		8430A1A01A9FE10800581469 /* JavaExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JavaExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8430A1A41A9FE10800581469 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8430A1A51A9FE10800581469 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -89,10 +86,8 @@
 		8430A1A21A9FE10800581469 /* JavaExample */ = {
 			isa = PBXGroup;
 			children = (
-				842E260E1AA1FF3A001DA62C /* JavaWrapper.m */,
+				842E260E1AA1FF3A001DA62C /* JavaWrapper.mm */,
 				842E260F1AA1FF3A001DA62C /* JavaWrapper.h */,
-				842E26111AA1FF50001DA62C /* JavaCWrapper.mm */,
-				842E26121AA1FF50001DA62C /* JavaCWrapper.h */,
 				846C54D21AA0A84500A6A3D4 /* Java */,
 				8430A1C51A9FE25700581469 /* Documentation */,
 				8430A1C41A9FE15B00581469 /* Resources */,
@@ -274,8 +269,7 @@
 				8430A1C71A9FE28600581469 /* instructions.md in Sources */,
 				8430A1A81A9FE10800581469 /* ViewController.swift in Sources */,
 				8430A1A61A9FE10800581469 /* AppDelegate.swift in Sources */,
-				842E26101AA1FF3A001DA62C /* JavaWrapper.m in Sources */,
-				842E26131AA1FF50001DA62C /* JavaCWrapper.mm in Sources */,
+				842E26101AA1FF3A001DA62C /* JavaWrapper.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
