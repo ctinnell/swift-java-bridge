@@ -17,6 +17,7 @@ JNIEnv *env;
 
 
 JNIEnv* create_vm(JavaVM ** jvm) {
+
     JavaVMInitArgs vm_args;
     JavaVMOption options;
     //options.optionString = "-D."; //Path to
@@ -68,59 +69,55 @@ jclass get_bridge_class() {
 
 }
 
+
 void initialize_vm() {
     JNIEnv *env;
     JavaVM * jvm;
     env = create_vm(&jvm);
 }
 
+NSString *convertJavaString(jstring javaString) {
+    NSString	*string;
+    const char	*nativeString;
+    
+    nativeString = env->GetStringUTFChars(javaString, JNI_FALSE);
+    string = [NSString stringWithUTF8String:nativeString];
+
+    return string;
+}
+
 -(void)initialize {
     initialize_vm();
     jclass javaBridge = get_bridge_class();
+    jstring result = NULL;
+
+    //Constructor
+    jmethodID constructorMethodID = env->GetMethodID(javaBridge, "<init>", "()V");
+    if (env->ExceptionCheck()) {
+        printf("\nError Finding Method ID\n");
+        env->ExceptionDescribe();
+    }
+    
+    jobject bridgeInstance = env->NewObject(javaBridge, constructorMethodID);
+    
+    //Takes Standard Java Signature - ()-takes no parms   Ljava/lang/String; - returns string
+    jmethodID javaMethodId = env->GetMethodID(javaBridge, "testMethod", "()Ljava/lang/String;");
+    if (env->ExceptionCheck()) {
+        printf("\nError Finding Method ID\n");
+        env->ExceptionDescribe();
+    }
+    else {
+        result = (jstring)env->CallObjectMethod(bridgeInstance,javaMethodId,NULL);
+        if (env->ExceptionCheck()) {
+            printf("\nError Calling Method\n");
+            env->ExceptionDescribe();
+        }
+        else {
+            NSString *str = convertJavaString(result);
+            NSLog(str);
+        }
+    }
 }
-//
-//- (void) accessJavaClass
-//{
-//    JavaVM* jvm;     JNIEnv* env;
-//    
-//    JavaVMOption options[1];
-//    
-//    options[0].optionString = "-Djava.class.path=.";
-//    
-//    JavaVMInitArgs args;
-//    args.version = JNI_VERSION_1_6;
-//    
-//    args.options = options;
-//    
-//    args.nOptions = 1;
-//    
-//    int envError = JNI_CreateJavaVM(&jvm, (void**) &env, &args);
-//    
-//    if (envError == JNI_OK)
-//        
-//    {
-//        if ((*jvm)->AttachCurrentThread(jvm, (void**) &env, NULL) == JNI_OK)
-//        {
-//            jclass javaTestCls = (*env)->FindClass(env, "JavaTest");
-//            
-//            if (javaTestCls != nil)
-//            {
-//                NSLog(@”Accessed”);
-//                
-//                (*env)->DeleteLocalRef(env, javaTestCls);
-//            }
-//            else
-//            {
-//                NSLog(@”Not Accessed”); }
-//            
-//            (jvm[0])->DetachCurrentThread(jvm);
-//        }
-//    }
-//    else
-//    {
-//        NSLog(@”JVM has not created”);
-//    }
-//}
 
 
 @end
