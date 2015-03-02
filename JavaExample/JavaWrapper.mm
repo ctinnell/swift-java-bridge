@@ -47,7 +47,6 @@ jclass get_bridge_class() {
                 printf("\nError Finding Class\n");
                 env->ExceptionDescribe();
             }
-            bridgeClass = env->FindClass("java.lang.Math");
 
             if (bridgeClass != nil)
             {

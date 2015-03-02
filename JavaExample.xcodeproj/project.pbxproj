@@ -15,7 +15,7 @@
 		8430A1B91A9FE10800581469 /* JavaExampleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8430A1B81A9FE10800581469 /* JavaExampleTests.swift */; };
 		8430A1C31A9FE14E00581469 /* JavaVM.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8430A1C21A9FE14E00581469 /* JavaVM.framework */; };
 		8430A1C71A9FE28600581469 /* instructions.md in Sources */ = {isa = PBXBuildFile; fileRef = 8430A1C61A9FE28600581469 /* instructions.md */; };
-		846C54D61AA0A88900A6A3D4 /* ObjCBridge.class in Resources */ = {isa = PBXBuildFile; fileRef = 846C54D51AA0A88900A6A3D4 /* ObjCBridge.class */; };
+		84FA69551AA4A8D7000A8F7A /* ObjCBridge.class in Resources */ = {isa = PBXBuildFile; fileRef = 84FA69541AA4A8D7000A8F7A /* ObjCBridge.class */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -43,7 +43,7 @@
 		8430A1B81A9FE10800581469 /* JavaExampleTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JavaExampleTests.swift; sourceTree = "<group>"; };
 		8430A1C21A9FE14E00581469 /* JavaVM.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaVM.framework; path = System/Library/Frameworks/JavaVM.framework; sourceTree = SDKROOT; };
 		8430A1C61A9FE28600581469 /* instructions.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = instructions.md; sourceTree = "<group>"; };
-		846C54D51AA0A88900A6A3D4 /* ObjCBridge.class */ = {isa = PBXFileReference; lastKnownFileType = compiled.javaclass; path = ObjCBridge.class; sourceTree = "<group>"; };
+		84FA69541AA4A8D7000A8F7A /* ObjCBridge.class */ = {isa = PBXFileReference; lastKnownFileType = compiled.javaclass; path = ObjCBridge.class; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -161,7 +161,7 @@
 		846C54D41AA0A88900A6A3D4 /* objcbridge */ = {
 			isa = PBXGroup;
 			children = (
-				846C54D51AA0A88900A6A3D4 /* ObjCBridge.class */,
+				84FA69541AA4A8D7000A8F7A /* ObjCBridge.class */,
 			);
 			path = objcbridge;
 			sourceTree = "<group>";
@@ -246,7 +246,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				846C54D61AA0A88900A6A3D4 /* ObjCBridge.class in Resources */,
+				84FA69551AA4A8D7000A8F7A /* ObjCBridge.class in Resources */,
 				8430A1AA1A9FE10800581469 /* Images.xcassets in Resources */,
 				8430A1AD1A9FE10800581469 /* Main.storyboard in Resources */,
 			);
