@@ -10,5 +10,8 @@
 #define __JavaExample__JavaCWrapper__
 
 #include <stdio.h>
+#include "JavaVM/jni.h"
+
+//void initialize_vm();
 
 #endif /* defined(__JavaExample__JavaCWrapper__) */

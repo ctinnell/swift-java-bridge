@@ -13,6 +13,9 @@ class ViewController: NSViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        var javaWrapper = JavaWrapper()
+        javaWrapper.initializeVM()
+        
         println("bridge created")
         // Do any additional setup after loading the view.
         

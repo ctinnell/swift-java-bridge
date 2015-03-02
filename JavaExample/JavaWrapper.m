@@ -6,9 +6,12 @@
 //  Copyright (c) 2015 Clay Tinnell. All rights reserved.
 //
 #import "JavaWrapper.h"
-//#import "jni.h"
+#import "JavaCWrapper.h"
 
 @implementation JavaWrapper
 
+- (void)initializeVM {
+    initialize_vm();
+}
 
 @end

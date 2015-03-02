@@ -9,5 +9,6 @@
 
 @interface JavaWrapper : NSObject
 
+- (void)initializeVM;
 
 @end

@@ -16,10 +16,15 @@
 JavaVM * g_vm;
 jobject g_obj;
 jmethodID g_mid;
+JNIEnv *env;
+
+// eliminate "deprecated conversion from string constant warning
+#pragma GCC diagnostic ignored "-Wwrite-strings"
+
 
 JNIEnv* create_vm(JavaVM ** jvm) {
     
-    JNIEnv *env;
+
     JavaVMInitArgs vm_args;
     JavaVMOption options;
     options.optionString = "-Djava.class.path=D:\\Java Src\\TestStruct"; //Path to the java source code
@@ -32,6 +37,12 @@ JNIEnv* create_vm(JavaVM ** jvm) {
     if(ret < 0)
         printf("\nUnable to Launch JVM\n");
     return env;
+}
+
+void initialize_vm() {
+    JNIEnv *env;
+    JavaVM * jvm;
+    env = create_vm(&jvm);
 }
 
 //JNIEXPORT jboolean JNICALL Java_com_adamish_Foo_register
