@@ -35,14 +35,12 @@ JNIEnv* create_vm(JavaVM ** jvm) {
     return env;
 }
 
-jclass get_bridge_class() {
-    jclass bridgeClass = NULL;
+jclass get_the_class() {
+        jclass bridgeClass = NULL;
         JavaVM *jvm;
-    //bridgeClass = env->FindClass("com/objcbridge/ObjCBridge");
     
         if (jvm->AttachCurrentThread((void**) &env, NULL) == JNI_OK)
         {
-            //
             bridgeClass = env->FindClass("com/objcbridge/ObjCBridge");
             if (env->ExceptionCheck()) {
                 printf("\nError Finding Class\n");
@@ -53,13 +51,11 @@ jclass get_bridge_class() {
             {
                printf("\nFound class\n");
 
-                //(*env)->DeleteLocalRef(env, javaTestCls);
             }
             else
             {
                 printf("\nDidn't Find class\n"); }
 
-            //jvm->DetachCurrentThread();
         }
         else
         {
@@ -67,6 +63,35 @@ jclass get_bridge_class() {
         }
     return bridgeClass;
 
+}
+
+jclass get_connection_class() {
+    jclass connectionClass = NULL;
+    JavaVM *jvm;
+    
+    if (jvm->AttachCurrentThread((void**) &env, NULL) == JNI_OK)
+    {
+        connectionClass = env->FindClass("com/objcbridge/JDBCWrapper");
+        if (env->ExceptionCheck()) {
+            printf("\nError Finding Class\n");
+            env->ExceptionDescribe();
+        }
+        
+        if (connectionClass != nil)
+        {
+            printf("\nFound class\n");
+            
+        }
+        else
+        {
+            printf("\nDidn't Find class\n"); }
+        
+    }
+    else
+    {
+        printf("\nJVM Not Created\n");
+    }
+    return connectionClass;
 }
 
 
@@ -88,7 +113,8 @@ NSString *convertJavaString(jstring javaString) {
 
 -(void)initialize {
     initialize_vm();
-    jclass javaBridge = get_bridge_class();
+    const char *name = "com/objcbridge/ObjCBridge";
+    jclass javaBridge = get_the_class();
     jstring result = NULL;
 
     //Constructor
