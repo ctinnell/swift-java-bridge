@@ -100,7 +100,6 @@
 				8430A1C51A9FE25700581469 /* Documentation */,
 				8430A1C41A9FE15B00581469 /* Resources */,
 				8430A1A51A9FE10800581469 /* AppDelegate.swift */,
-				8430A1A71A9FE10800581469 /* ViewController.swift */,
 				8430A1A91A9FE10800581469 /* Images.xcassets */,
 				8430A1AB1A9FE10800581469 /* Main.storyboard */,
 				8430A1A31A9FE10800581469 /* Supporting Files */,
@@ -179,6 +178,7 @@
 		84A3FCD81AA6796A00E8E4E2 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
+				8430A1A71A9FE10800581469 /* ViewController.swift */,
 				84A3FCD91AA6797F00E8E4E2 /* AddConnectionViewController.swift */,
 			);
 			name = ViewController;

@@ -770,6 +770,16 @@
                                     </allowedInputSourceLocales>
                                 </secureTextFieldCell>
                             </secureTextField>
+                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qsi-qu-8Fi">
+                                <rect key="frame" x="215" y="44" width="154" height="25"/>
+                                <buttonCell key="cell" type="squareTextured" title="Connect" bezelStyle="texturedSquare" imagePosition="overlaps" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="9mJ-Hn-ZJg">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="connectToDatabase:" target="zFF-06-44I" id="ZeZ-wb-ezA"/>
+                                </connections>
+                            </button>
                         </subviews>
                     </view>
                     <connections>

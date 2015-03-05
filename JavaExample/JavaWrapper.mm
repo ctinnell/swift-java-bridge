@@ -68,29 +68,22 @@ jclass get_the_class() {
 jclass get_connection_class() {
     jclass connectionClass = NULL;
     JavaVM *jvm;
+
+    connectionClass = env->FindClass("com/objcbridge/JDBCWrapper");
+    if (env->ExceptionCheck()) {
+        printf("\nError Finding Class\n");
+        env->ExceptionDescribe();
+    }
     
-    if (jvm->AttachCurrentThread((void**) &env, NULL) == JNI_OK)
+    if (connectionClass != nil)
     {
-        connectionClass = env->FindClass("com/objcbridge/JDBCWrapper");
-        if (env->ExceptionCheck()) {
-            printf("\nError Finding Class\n");
-            env->ExceptionDescribe();
-        }
-        
-        if (connectionClass != nil)
-        {
-            printf("\nFound class\n");
-            
-        }
-        else
-        {
-            printf("\nDidn't Find class\n"); }
+        printf("\nFound class\n");
         
     }
     else
     {
-        printf("\nJVM Not Created\n");
-    }
+        printf("\nDidn't Find class\n"); }
+    
     return connectionClass;
 }
 
@@ -100,6 +93,37 @@ void initialize_vm() {
     JavaVM * jvm;
     env = create_vm(&jvm);
 }
+
+void get_db_connection(const char * name, const char * url, const char * userid, const char * password) {
+    jclass jdbcClass = get_connection_class();
+    if (env->ExceptionCheck()) {
+        printf("\nError Getting Connection Class\n");
+        env->ExceptionDescribe();
+    }
+
+    //Constructor
+    jmethodID constructorMethodID = env->GetMethodID(jdbcClass, "<init>", "()V");
+    if (env->ExceptionCheck()) {
+        printf("\nError Getting Method ID for Connection Class Constructor\n");
+        env->ExceptionDescribe();
+    }
+
+    jobject jdbcInstance = env->NewObject(jdbcClass, constructorMethodID);
+    if (env->ExceptionCheck()) {
+        printf("\nError Instantiating JDBC Object\n");
+        env->ExceptionDescribe();
+    }
+    
+    //Takes Standard Java Signature - ()-takes no parms   Ljava/lang/String; - returns string
+    jmethodID javaMethodId = env->GetMethodID(jdbcClass, "connect", "(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Ljava/sql/Connection;");
+    if (env->ExceptionCheck()) {
+        printf("\nError Finding Connect Method ID\n");
+        env->ExceptionDescribe();
+    }
+
+}
+
+
 
 NSString *convertJavaString(jstring javaString) {
     NSString	*string;
@@ -113,37 +137,14 @@ NSString *convertJavaString(jstring javaString) {
 
 -(void)initialize {
     initialize_vm();
-    const char *name = "com/objcbridge/ObjCBridge";
-    jclass javaBridge = get_the_class();
-    jstring result = NULL;
-
-    //Constructor
-    jmethodID constructorMethodID = env->GetMethodID(javaBridge, "<init>", "()V");
-    if (env->ExceptionCheck()) {
-        printf("\nError Finding Method ID\n");
-        env->ExceptionDescribe();
-    }
-    
-    jobject bridgeInstance = env->NewObject(javaBridge, constructorMethodID);
-    
-    //Takes Standard Java Signature - ()-takes no parms   Ljava/lang/String; - returns string
-    jmethodID javaMethodId = env->GetMethodID(javaBridge, "testMethod", "()Ljava/lang/String;");
-    if (env->ExceptionCheck()) {
-        printf("\nError Finding Method ID\n");
-        env->ExceptionDescribe();
-    }
-    else {
-        result = (jstring)env->CallObjectMethod(bridgeInstance,javaMethodId,NULL);
-        if (env->ExceptionCheck()) {
-            printf("\nError Calling Method\n");
-            env->ExceptionDescribe();
-        }
-        else {
-            NSString *str = convertJavaString(result);
-            NSLog(str);
-        }
-    }
 }
 
+-(void) connect:(NSString *)name url:(NSString *)url userid:(NSString *)userid password:(NSString *)password {
+    const char *nm = [name UTF8String];
+    const char *ul = [name UTF8String];
+    const char *ud = [userid UTF8String];
+    const char *pw = [password UTF8String];
+    get_db_connection(nm, ul, ud, pw);
+}
 
 @end
