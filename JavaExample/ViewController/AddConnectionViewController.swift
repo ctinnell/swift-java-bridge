@@ -19,7 +19,7 @@ class AddConnectionViewController: NSViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        nameTextField.stringValue = "Test Database"
+        nameTextField.stringValue = "com.ibm.db2.jcc.DB2Driver"
         urlTextField.stringValue = "jdbc:db2://devdb.site.com:50000/gicrop02"
         userNameTextField.stringValue = "testUser"
         passwordTextField.stringValue = "pwd"

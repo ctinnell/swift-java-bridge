@@ -120,7 +120,13 @@ void get_db_connection(const char * name, const char * url, const char * userid,
         printf("\nError Finding Connect Method ID\n");
         env->ExceptionDescribe();
     }
-
+    
+    // Call connect method
+    jobject result = env->CallObjectMethod(jdbcInstance, javaMethodId, url, name, userid, password);
+    if (env->ExceptionCheck()) {
+        printf("\nError Calling Connect Method");
+        env->ExceptionDescribe();
+    }
 }
 
 
