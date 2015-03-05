@@ -122,7 +122,14 @@ void get_db_connection(const char * name, const char * url, const char * userid,
     }
     
     // Call connect method
-    jobject result = env->CallObjectMethod(jdbcInstance, javaMethodId, url, name, userid, password);
+    
+    jstring name_jstr = env->NewStringUTF(name);
+    jstring url_jstr = env->NewStringUTF(url);
+    jstring userid_jstr = env->NewStringUTF(userid);
+    jstring pwd_jstr = env->NewStringUTF(password);
+
+    
+    jobject result = env->CallObjectMethod(jdbcInstance, javaMethodId, url_jstr, name_jstr, userid_jstr, pwd_jstr);
     if (env->ExceptionCheck()) {
         printf("\nError Calling Connect Method");
         env->ExceptionDescribe();
