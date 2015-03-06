@@ -154,7 +154,7 @@ NSString *convertJavaString(jstring javaString) {
 
 -(void) connect:(NSString *)name url:(NSString *)url userid:(NSString *)userid password:(NSString *)password {
     const char *nm = [name UTF8String];
-    const char *ul = [name UTF8String];
+    const char *ul = [url UTF8String];
     const char *ud = [userid UTF8String];
     const char *pw = [password UTF8String];
     get_db_connection(nm, ul, ud, pw);
