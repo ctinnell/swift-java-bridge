@@ -16,8 +16,8 @@
 		8430A1C31A9FE14E00581469 /* JavaVM.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8430A1C21A9FE14E00581469 /* JavaVM.framework */; };
 		8430A1C71A9FE28600581469 /* instructions.md in Sources */ = {isa = PBXBuildFile; fileRef = 8430A1C61A9FE28600581469 /* instructions.md */; };
 		84A3FCD41AA6179500E8E4E2 /* JDBCWrapper.class in Resources */ = {isa = PBXBuildFile; fileRef = 84A3FCD21AA6179500E8E4E2 /* JDBCWrapper.class */; };
-		84A3FCD51AA6179500E8E4E2 /* db2jcc4.jar in Frameworks */ = {isa = PBXBuildFile; fileRef = 84A3FCD31AA6179500E8E4E2 /* db2jcc4.jar */; };
 		84A3FCDB1AA6797F00E8E4E2 /* AddConnectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A3FCD91AA6797F00E8E4E2 /* AddConnectionViewController.swift */; };
+		84EEDDA51AAA32000012C953 /* db2jcc4.jar in Frameworks */ = {isa = PBXBuildFile; fileRef = 84EEDDA41AAA32000012C953 /* db2jcc4.jar */; };
 		84FA69551AA4A8D7000A8F7A /* ObjCBridge.class in Resources */ = {isa = PBXBuildFile; fileRef = 84FA69541AA4A8D7000A8F7A /* ObjCBridge.class */; };
 /* End PBXBuildFile section */
 
@@ -47,8 +47,8 @@
 		8430A1C21A9FE14E00581469 /* JavaVM.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaVM.framework; path = System/Library/Frameworks/JavaVM.framework; sourceTree = SDKROOT; };
 		8430A1C61A9FE28600581469 /* instructions.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = instructions.md; sourceTree = "<group>"; };
 		84A3FCD21AA6179500E8E4E2 /* JDBCWrapper.class */ = {isa = PBXFileReference; lastKnownFileType = compiled.javaclass; path = JDBCWrapper.class; sourceTree = "<group>"; };
-		84A3FCD31AA6179500E8E4E2 /* db2jcc4.jar */ = {isa = PBXFileReference; lastKnownFileType = archive.jar; path = db2jcc4.jar; sourceTree = "<group>"; };
 		84A3FCD91AA6797F00E8E4E2 /* AddConnectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AddConnectionViewController.swift; path = ViewController/AddConnectionViewController.swift; sourceTree = "<group>"; };
+		84EEDDA41AAA32000012C953 /* db2jcc4.jar */ = {isa = PBXFileReference; lastKnownFileType = archive.jar; path = db2jcc4.jar; sourceTree = "<group>"; };
 		84FA69541AA4A8D7000A8F7A /* ObjCBridge.class */ = {isa = PBXFileReference; lastKnownFileType = compiled.javaclass; path = ObjCBridge.class; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -57,8 +57,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				84A3FCD51AA6179500E8E4E2 /* db2jcc4.jar in Frameworks */,
 				8430A1C31A9FE14E00581469 /* JavaVM.framework in Frameworks */,
+				84EEDDA51AAA32000012C953 /* db2jcc4.jar in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -93,6 +93,7 @@
 		8430A1A21A9FE10800581469 /* JavaExample */ = {
 			isa = PBXGroup;
 			children = (
+				84EEDDA41AAA32000012C953 /* db2jcc4.jar */,
 				84A3FCD81AA6796A00E8E4E2 /* ViewController */,
 				842E260E1AA1FF3A001DA62C /* JavaWrapper.mm */,
 				842E260F1AA1FF3A001DA62C /* JavaWrapper.h */,
@@ -169,7 +170,6 @@
 			isa = PBXGroup;
 			children = (
 				84A3FCD21AA6179500E8E4E2 /* JDBCWrapper.class */,
-				84A3FCD31AA6179500E8E4E2 /* db2jcc4.jar */,
 				84FA69541AA4A8D7000A8F7A /* ObjCBridge.class */,
 			);
 			path = objcbridge;

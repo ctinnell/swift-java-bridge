@@ -21,7 +21,7 @@ JNIEnv* create_vm(JavaVM ** jvm) {
     JavaVMInitArgs vm_args;
     JavaVMOption options;
     //options.optionString = "-D."; //Path to
-    options.optionString = "-Djava.class.path=/Users/ctinnell/Development/osx/JavaExample/JavaExample"; //Path to the java source code
+    options.optionString = "-Djava.class.path=/Users/ctinnell/Development/osx/JavaExample/JavaExample:/Users/ctinnell/Development/osx/JavaExample/JavaExample/db2jcc4.jar"; //Path to the java source code
     vm_args.version = JNI_VERSION_1_6; //JDK version. This indicates version 1.6
     vm_args.nOptions = 1;
     vm_args.options = &options;
