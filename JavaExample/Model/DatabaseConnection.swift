@@ -11,9 +11,28 @@ import Cocoa
 class DatabaseConnection {
 
     let databaseDriver: DatabaseDriver
-    var userName: String?
+    let jdbcWrapper: JavaWrapper
+    let hostName: String
+    let port: String
+    let databaseName: String
     
-    init(databaseDriver: DatabaseDriver) {
+    // gets set at connection time. don't save pwd.
+    var userName: String?
+
+    init(databaseDriver: DatabaseDriver, hostName: String, port: String, databaseName: String) {
         self.databaseDriver = databaseDriver
+        self.jdbcWrapper = JavaWrapper()
+        self.hostName = hostName
+        self.port = port
+        self.databaseName = databaseName
+    }
+    
+    func urlString() -> String {
+        return databaseDriver.urlString(hostName, port: port, databaseName: databaseName)
+    }
+    
+    func connect(userName: String, password: String) {
+        self.userName = userName
+        jdbcWrapper.connect(databaseDriver.className, url: urlString(), userid: userName, password: password)
     }
 }
