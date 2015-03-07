@@ -10,32 +10,22 @@ import Cocoa
 
 class AddConnectionViewController: NSViewController {
 
-    @IBOutlet weak var nameTextField: NSTextField!
-    @IBOutlet weak var urlTextField: NSTextField!
+ 
     @IBOutlet weak var userNameTextField: NSTextField!
     @IBOutlet weak var passwordTextField: NSSecureTextField!
     
     var wrapper: JavaWrapper?
+    var dbConnection: DatabaseConnection?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        nameTextField.stringValue = "com.ibm.db2.jcc.DB2Driver"
-        urlTextField.stringValue = "jdbc:db2://devdb.site.com:50000/gicrop02"
         userNameTextField.stringValue = "testUser"
-        passwordTextField.stringValue = "pwd"
-    
-        // Do view setup here.
+        passwordTextField.stringValue = "pwd"    
     }
     
     @IBAction func connectToDatabase(sender: AnyObject) {
-        wrapper = JavaWrapper()
-        //wrapper?.initialize()
-        if let w = wrapper {
-//            dispatch_async(dispatch_get_main_queue(), {
-                w.connect(nameTextField.stringValue, url: urlTextField.stringValue, userid:userNameTextField.stringValue, password:passwordTextField.stringValue)
-//            })
-            
-        }
+        dbConnection = DatabaseConnection(databaseDriver: DB2DatabaseDriver(), hostName: "devdb.greatag.com", port: "50000", databaseName: "gicrop02")
+        dbConnection?.connect(userNameTextField.stringValue, password: passwordTextField.stringValue)
     }
 }
 

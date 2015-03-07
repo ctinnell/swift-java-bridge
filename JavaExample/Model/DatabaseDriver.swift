@@ -25,7 +25,7 @@ class DatabaseDriver {
     }
     
     func urlString(hostName: String, port: String, databaseName: String) -> String {
-        return urlPrefix + ":" + port + "/" + databaseName;
+        return urlPrefix + hostName + ":" + port + "/" + databaseName;
     }
 }
 
