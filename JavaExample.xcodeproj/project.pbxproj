@@ -17,6 +17,7 @@
 		8430A1C71A9FE28600581469 /* instructions.md in Sources */ = {isa = PBXBuildFile; fileRef = 8430A1C61A9FE28600581469 /* instructions.md */; };
 		8493F7FB1AAB587E00DF2E82 /* DatabaseDriver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8493F7FA1AAB587E00DF2E82 /* DatabaseDriver.swift */; };
 		8493F7FD1AAB5AFB00DF2E82 /* DB2DatabaseDriver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8493F7FC1AAB5AFB00DF2E82 /* DB2DatabaseDriver.swift */; };
+		8493F8011AAB5CD700DF2E82 /* DatabaseConnection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8493F8001AAB5CD700DF2E82 /* DatabaseConnection.swift */; };
 		84A3FCDB1AA6797F00E8E4E2 /* AddConnectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A3FCD91AA6797F00E8E4E2 /* AddConnectionViewController.swift */; };
 		84EEDDA71AAA38A30012C953 /* JDBCWrapper.class in Resources */ = {isa = PBXBuildFile; fileRef = 84EEDDA61AAA38A30012C953 /* JDBCWrapper.class */; };
 		84EEDDA91AAA3A210012C953 /* db2jcc4.jar in Frameworks */ = {isa = PBXBuildFile; fileRef = 84EEDDA81AAA3A210012C953 /* db2jcc4.jar */; };
@@ -50,6 +51,7 @@
 		8430A1C61A9FE28600581469 /* instructions.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = instructions.md; sourceTree = "<group>"; };
 		8493F7FA1AAB587E00DF2E82 /* DatabaseDriver.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DatabaseDriver.swift; path = Model/DatabaseDriver.swift; sourceTree = "<group>"; };
 		8493F7FC1AAB5AFB00DF2E82 /* DB2DatabaseDriver.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DB2DatabaseDriver.swift; path = Model/DB2DatabaseDriver.swift; sourceTree = "<group>"; };
+		8493F8001AAB5CD700DF2E82 /* DatabaseConnection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DatabaseConnection.swift; path = Model/DatabaseConnection.swift; sourceTree = "<group>"; };
 		84A3FCD91AA6797F00E8E4E2 /* AddConnectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AddConnectionViewController.swift; path = ViewController/AddConnectionViewController.swift; sourceTree = "<group>"; };
 		84EEDDA61AAA38A30012C953 /* JDBCWrapper.class */ = {isa = PBXFileReference; lastKnownFileType = compiled.javaclass; path = JDBCWrapper.class; sourceTree = "<group>"; };
 		84EEDDA81AAA3A210012C953 /* db2jcc4.jar */ = {isa = PBXFileReference; lastKnownFileType = archive.jar; path = db2jcc4.jar; sourceTree = "<group>"; };
@@ -184,6 +186,7 @@
 			isa = PBXGroup;
 			children = (
 				8493F7FE1AAB5C1900DF2E82 /* DatabaseDriver */,
+				8493F7FF1AAB5CB700DF2E82 /* DatabaseConnection */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -195,6 +198,14 @@
 				8493F7FC1AAB5AFB00DF2E82 /* DB2DatabaseDriver.swift */,
 			);
 			name = DatabaseDriver;
+			sourceTree = "<group>";
+		};
+		8493F7FF1AAB5CB700DF2E82 /* DatabaseConnection */ = {
+			isa = PBXGroup;
+			children = (
+				8493F8001AAB5CD700DF2E82 /* DatabaseConnection.swift */,
+			);
+			name = DatabaseConnection;
 			sourceTree = "<group>";
 		};
 		84A3FCD81AA6796A00E8E4E2 /* ViewController */ = {
@@ -307,6 +318,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8493F8011AAB5CD700DF2E82 /* DatabaseConnection.swift in Sources */,
 				8430A1C71A9FE28600581469 /* instructions.md in Sources */,
 				8430A1A81A9FE10800581469 /* ViewController.swift in Sources */,
 				8493F7FD1AAB5AFB00DF2E82 /* DB2DatabaseDriver.swift in Sources */,

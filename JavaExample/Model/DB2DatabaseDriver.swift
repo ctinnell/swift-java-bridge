@@ -10,6 +10,6 @@ import Cocoa
 
 class DB2DatabaseDriver: DatabaseDriver {
     init() {
-        super.init(databaseType: .DB2, className: "com.ibm.db2.jcc.DB2Driver")
+        super.init(databaseType: .DB2, className: "com.ibm.db2.jcc.DB2Driver", urlPrefix: "jdbc:db2://")
     }
 }
