@@ -17,11 +17,13 @@ class DatabaseDriver {
     let databaseType: DatabaseType
     let className: String
     let urlPrefix: String
+    let defaultPort: String
     
-    init(databaseType: DatabaseType, className: String, urlPrefix: String) {
+    init(databaseType: DatabaseType, className: String, urlPrefix: String, defaultPort: String) {
         self.databaseType = databaseType
         self.className = className
         self.urlPrefix = urlPrefix
+        self.defaultPort = defaultPort
     }
     
     func urlString(hostName: String, port: String, databaseName: String) -> String {
