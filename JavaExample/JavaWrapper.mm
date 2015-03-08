@@ -14,7 +14,6 @@
 @implementation JavaWrapper
 
 JNIEnv *env;
-jobject connection;
 
 JNIEnv* create_vm(JavaVM ** jvm) {
 
@@ -131,11 +130,13 @@ void get_db_connection(const char * name, const char * url, const char * userid,
     jstring pwd_jstr = env->NewStringUTF(password);
 
     
-    connection = env->CallObjectMethod(jdbcInstance, javaMethodId, url_jstr, name_jstr, userid_jstr, pwd_jstr);
+    jobject result = env->CallObjectMethod(jdbcInstance, javaMethodId, url_jstr, name_jstr, userid_jstr, pwd_jstr);
     if (env->ExceptionCheck()) {
         printf("\nError Calling Connect Method");
         env->ExceptionDescribe();
     }
+    
+    
 }
 
 
