@@ -116,7 +116,7 @@ void get_db_connection(const char * name, const char * url, const char * userid,
     //Takes Standard Java Signature - ()-takes no parms   Ljava/lang/String; - returns string
 //    jmethodID javaMethodId = env->GetMethodID(jdbcClass, "connect", "(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Ljava/sql/Connection;");
     jmethodID javaMethodId = env->GetMethodID(jdbcClass, "connect",
-                                              "(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Ljava/util/HashMap;");
+                                              "(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V");
     if (env->ExceptionCheck()) {
         printf("\nError Finding Connect Method ID\n");
         env->ExceptionDescribe();
@@ -130,7 +130,7 @@ void get_db_connection(const char * name, const char * url, const char * userid,
     jstring pwd_jstr = env->NewStringUTF(password);
 
     
-    jobject result = env->CallObjectMethod(jdbcInstance, javaMethodId, url_jstr, name_jstr, userid_jstr, pwd_jstr);
+    env->CallVoidMethod(jdbcInstance, javaMethodId, url_jstr, name_jstr, userid_jstr, pwd_jstr);
     if (env->ExceptionCheck()) {
         printf("\nError Calling Connect Method");
         env->ExceptionDescribe();
