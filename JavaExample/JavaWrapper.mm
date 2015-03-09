@@ -114,7 +114,6 @@ void get_db_connection(const char * name, const char * url, const char * userid,
     }
     
     //Takes Standard Java Signature - ()-takes no parms   Ljava/lang/String; - returns string
-//    jmethodID javaMethodId = env->GetMethodID(jdbcClass, "connect", "(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Ljava/sql/Connection;");
     jmethodID javaMethodId = env->GetMethodID(jdbcClass, "connect",
                                               "(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V");
     if (env->ExceptionCheck()) {
@@ -134,12 +133,10 @@ void get_db_connection(const char * name, const char * url, const char * userid,
     if (env->ExceptionCheck()) {
         printf("\nError Calling Connect Method");
         env->ExceptionDescribe();
+        //http://stackoverflow.com/questions/10408972/how-to-obtain-a-description-of-a-java-exception-in-c-when-using-jni
     }
     
-    
 }
-
-
 
 NSString *convertJavaString(jstring javaString) {
     NSString	*string;
