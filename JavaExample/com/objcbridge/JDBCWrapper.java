@@ -1,7 +1,9 @@
 package com.objcbridge;
 
+import java.beans.Statement;
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.HashMap;
 
@@ -10,6 +12,7 @@ import java.util.HashMap;
  */
 public class JDBCWrapper {
     public Connection connection = null;
+    public ResultSet rs = null;
 
     public void connect(String url, String className, String userName, String password) throws SQLException {
         try {
@@ -30,13 +33,27 @@ public class JDBCWrapper {
         } finally{
             if(connection!=null){
                 System.out.println("Connected successfully.");
-                try {
-                    connection.close();
-                } catch (SQLException sqle) {
-                    sqle.printStackTrace();
-                    throw sqle;
-                }
             }
+        }
+    }
+
+    public void disconnect() throws SQLException {
+        try {
+            connection.close();
+        } catch (SQLException sqle) {
+            sqle.printStackTrace();
+            throw sqle;
+        }
+    }
+
+    public void executeQuery(String query) throws  SQLException {
+        try {
+            java.sql.Statement stmt = connection.createStatement();
+            rs = stmt.executeQuery(query);
+        }
+        catch (SQLException sqle) {
+            sqle.printStackTrace();
+            throw sqle;
         }
     }
 

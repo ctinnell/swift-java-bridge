@@ -135,7 +135,6 @@ void get_db_connection(const char * name, const char * url, const char * userid,
         env->ExceptionDescribe();
         //http://stackoverflow.com/questions/10408972/how-to-obtain-a-description-of-a-java-exception-in-c-when-using-jni
     }
-    
 }
 
 NSString *convertJavaString(jstring javaString) {
