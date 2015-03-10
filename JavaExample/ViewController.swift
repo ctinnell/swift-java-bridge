@@ -10,6 +10,8 @@ import Cocoa
 import JavaVM
 
 class ViewController: NSViewController {
+    
+    @IBOutlet weak var sqlTextView: NSScrollView!
 
     override func viewDidLoad() {
         super.viewDidLoad()
