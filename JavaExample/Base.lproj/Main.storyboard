@@ -350,16 +350,6 @@
                                     </items>
                                 </menu>
                             </menuItem>
-                            <menuItem title="Query" id="bSF-Vy-C8d">
-                                <modifierMask key="keyEquivalentModifierMask"/>
-                                <menu key="submenu" title="Query" id="tN1-VP-oxP">
-                                    <items>
-                                        <menuItem title="Execute" id="Evq-ji-Ook">
-                                            <modifierMask key="keyEquivalentModifierMask"/>
-                                        </menuItem>
-                                    </items>
-                                </menu>
-                            </menuItem>
                             <menuItem title="Format" id="jxT-CU-nIS">
                                 <modifierMask key="keyEquivalentModifierMask"/>
                                 <menu key="submenu" title="Format" id="GEO-Iw-cKr">
@@ -836,7 +826,7 @@
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <textView importsGraphics="NO" findStyle="panel" continuousSpellChecking="YES" allowsUndo="YES" usesRuler="YES" usesFontPanel="YES" verticallyResizable="YES" allowsNonContiguousLayout="YES" quoteSubstitution="YES" dashSubstitution="YES" spellingCorrection="YES" smartInsertDelete="YES" id="RjM-kP-s2k">
-                                            <rect key="frame" x="0.0" y="0.0" width="287" height="133"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="287" height="497"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <size key="minSize" width="1190" height="497"/>
@@ -857,10 +847,20 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>
                             </scrollView>
+                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="XiP-VB-IpS">
+                                <rect key="frame" x="414" y="170" width="365" height="25"/>
+                                <buttonCell key="cell" type="roundTextured" title="Execute Query" bezelStyle="texturedRounded" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="sXr-co-P8y">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="executeQuery:" target="XfG-lQ-9wD" id="Ntc-9m-Aki"/>
+                                </connections>
+                            </button>
                         </subviews>
                     </view>
                     <connections>
-                        <outlet property="sqlTextView" destination="4eG-Fu-Unh" id="SkY-Yy-ZLE"/>
+                        <outlet property="sqlTextView" destination="4eG-Fu-Unh" id="q3Q-ym-aHQ"/>
                     </connections>
                 </viewController>
             </objects>

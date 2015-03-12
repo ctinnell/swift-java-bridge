@@ -13,9 +13,10 @@ class ViewController: NSViewController {
     
     @IBOutlet weak var sqlTextView: NSScrollView!
 
+    let javaWrapper = JavaWrapper()
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        var javaWrapper = JavaWrapper()
         javaWrapper.initialize()
         
         println("bridge created")
@@ -29,6 +30,10 @@ class ViewController: NSViewController {
         }
     }
 
+    @IBAction func executeQuery(sender: AnyObject) {
+        let text = sqlTextView.contentView.documentView?.string
+        javaWrapper.executeQuery(text)
+    }
 
 }
 

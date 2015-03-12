@@ -179,4 +179,9 @@ NSString *convertJavaString(jstring javaString) {
     get_db_connection(nm, ul, ud, pw);
 }
 
+-(void) executeQuery:(NSString *)queryText {
+    const char *q = [queryText UTF8String];
+    execute_query(q);
+}
+
 @end

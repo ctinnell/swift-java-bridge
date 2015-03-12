@@ -11,5 +11,6 @@
 
 -(void)initialize;
 -(void)connect:(NSString *)name url:(NSString *)url userid:(NSString *)userid password:(NSString *)password;
+-(void) executeQuery:(NSString *)queryText;
 
 @end
