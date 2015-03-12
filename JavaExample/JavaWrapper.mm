@@ -14,6 +14,8 @@
 @implementation JavaWrapper
 
 JNIEnv *env;
+jobject jdbcInstance;
+jclass jdbcClass;
 
 JNIEnv* create_vm(JavaVM ** jvm) {
 
@@ -66,7 +68,7 @@ jclass get_the_class() {
 
 jclass get_connection_class() {
     jclass connectionClass = NULL;
-    JavaVM *jvm;
+    JavaVM * jvm;
 
     connectionClass = env->FindClass("com/objcbridge/JDBCWrapper");
     if (env->ExceptionCheck()) {
@@ -94,7 +96,7 @@ void initialize_vm() {
 }
 
 void get_db_connection(const char * name, const char * url, const char * userid, const char * password) {
-    jclass jdbcClass = get_connection_class();
+    jdbcClass = get_connection_class();
     if (env->ExceptionCheck()) {
         printf("\nError Getting Connection Class\n");
         env->ExceptionDescribe();
@@ -107,7 +109,7 @@ void get_db_connection(const char * name, const char * url, const char * userid,
         env->ExceptionDescribe();
     }
 
-    jobject jdbcInstance = env->NewObject(jdbcClass, constructorMethodID);
+    jdbcInstance = env->NewObject(jdbcClass, constructorMethodID);
     if (env->ExceptionCheck()) {
         printf("\nError Instantiating JDBC Object\n");
         env->ExceptionDescribe();
@@ -134,6 +136,24 @@ void get_db_connection(const char * name, const char * url, const char * userid,
         printf("\nError Calling Connect Method");
         env->ExceptionDescribe();
         //http://stackoverflow.com/questions/10408972/how-to-obtain-a-description-of-a-java-exception-in-c-when-using-jni
+    }
+}
+
+void execute_query(const char * sql) {
+    jmethodID javaMethodId = env->GetMethodID(jdbcClass, "executeQuery",
+                                              "(Ljava/lang/String;)V");
+    if (env->ExceptionCheck()) {
+        printf("\nError Finding Query Method ID\n");
+        env->ExceptionDescribe();
+    }
+    
+    jstring sql_jstr = env->NewStringUTF(sql);
+
+    env->CallVoidMethod(jdbcInstance, javaMethodId, sql_jstr);
+    
+    if (env->ExceptionCheck()) {
+        printf("\nError Calling Query Method");
+        env->ExceptionDescribe();
     }
 }
 
