@@ -140,7 +140,7 @@ void get_db_connection(const char * name, const char * url, const char * userid,
 
 void execute_query(const char * sql) {
     jmethodID javaMethodId = env->GetMethodID(jdbcClass, "executeQuery",
-                                              "(Ljava/lang/String;)V");
+                                              "(Ljava/lang/String;)Ljava/sql/ResultSet;");
     if (env->ExceptionCheck()) {
         printf("\nError Finding Query Method ID\n");
         env->ExceptionDescribe();
