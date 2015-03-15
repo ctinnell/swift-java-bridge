@@ -46,7 +46,7 @@ public class JDBCWrapper {
         }
     }
 
-    public void executeQuery(String query) throws  SQLException {
+    public ResultSet executeQuery(String query) throws  SQLException {
         try {
             java.sql.Statement stmt = connection.createStatement();
             rs = stmt.executeQuery(query);
@@ -55,6 +55,7 @@ public class JDBCWrapper {
             sqle.printStackTrace();
             throw sqle;
         }
+        return rs;
     }
 
     public static void main(String[] args) {

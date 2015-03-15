@@ -68,7 +68,6 @@ jclass get_the_class() {
 
 jclass get_connection_class() {
     jclass connectionClass = NULL;
-    JavaVM * jvm;
 
     connectionClass = env->FindClass("com/objcbridge/JDBCWrapper");
     if (env->ExceptionCheck()) {
