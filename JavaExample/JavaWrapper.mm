@@ -148,13 +148,15 @@ void execute_query(const char * sql) {
     
     jstring sql_jstr = env->NewStringUTF(sql);
 
-    env->CallVoidMethod(jdbcInstance, javaMethodId, sql_jstr);
+    env->CallObjectMethod(jdbcInstance, javaMethodId, sql_jstr);
     
     if (env->ExceptionCheck()) {
         printf("\nError Calling Query Method");
         env->ExceptionDescribe();
     }
 }
+
+
 
 NSString *convertJavaString(jstring javaString) {
     NSString	*string;
