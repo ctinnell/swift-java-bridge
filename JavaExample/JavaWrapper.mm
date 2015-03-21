@@ -66,10 +66,10 @@ jclass get_the_class() {
 
 }
 
-jclass get_connection_class() {
+jclass get_class(const char * className) {
     jclass connectionClass = NULL;
-
-    connectionClass = env->FindClass("com/objcbridge/JDBCWrapper");
+    //"com/objcbridge/JDBCWrapper"
+    connectionClass = env->FindClass(className);
     if (env->ExceptionCheck()) {
         printf("\nError Finding Class\n");
         env->ExceptionDescribe();
@@ -87,6 +87,12 @@ jclass get_connection_class() {
     return connectionClass;
 }
 
+jclass get_resultset_class() {
+    const char * className = "java/sql/ResultSet";
+    jclass rsClass = get_class(className);
+    return rsClass;
+}
+
 
 void initialize_vm() {
     JNIEnv *env;
@@ -95,7 +101,8 @@ void initialize_vm() {
 }
 
 void get_db_connection(const char * name, const char * url, const char * userid, const char * password) {
-    jdbcClass = get_connection_class();
+    const char * className = "com/objcbridge/JDBCWrapper";
+    jdbcClass = get_class(className);
     if (env->ExceptionCheck()) {
         printf("\nError Getting Connection Class\n");
         env->ExceptionDescribe();
@@ -158,7 +165,18 @@ jobject execute_query(const char * sql) {
     return resultSet;
 }
 
+jobject get_rsmd(jobject rs) {
+    jclass rsClass = get_resultset_class();
+    jmethodID javaMethodId = env->GetMethodID(rsClass, "getMetaData",
+                                              "()Ljava/sql/ResultSetMetaData;");
+    if (env->ExceptionCheck()) {
+        printf("\nError Finding RSMD Method ID\n");
+        env->ExceptionDescribe();
+    }
 
+    jobject rsmd = env->CallObjectMethod(rs, javaMethodId);
+    return rsmd;
+}
 
 NSString *convertJavaString(jstring javaString) {
     NSString	*string;
@@ -185,6 +203,7 @@ NSString *convertJavaString(jstring javaString) {
 -(void) executeQuery:(NSString *)queryText {
     const char *q = [queryText UTF8String];
     jobject resultSet = execute_query(q);
+    jobject resultSetMetaData = get_rsmd(resultSet);
 }
 
 @end
