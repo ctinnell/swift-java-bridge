@@ -138,7 +138,7 @@ void get_db_connection(const char * name, const char * url, const char * userid,
     }
 }
 
-void execute_query(const char * sql) {
+jobject execute_query(const char * sql) {
     jmethodID javaMethodId = env->GetMethodID(jdbcClass, "executeQuery",
                                               "(Ljava/lang/String;)Ljava/sql/ResultSet;");
     if (env->ExceptionCheck()) {
@@ -148,12 +148,14 @@ void execute_query(const char * sql) {
     
     jstring sql_jstr = env->NewStringUTF(sql);
 
-    env->CallObjectMethod(jdbcInstance, javaMethodId, sql_jstr);
+    jobject resultSet = env->CallObjectMethod(jdbcInstance, javaMethodId, sql_jstr);
     
     if (env->ExceptionCheck()) {
         printf("\nError Calling Query Method");
         env->ExceptionDescribe();
     }
+    
+    return resultSet;
 }
 
 
@@ -182,7 +184,7 @@ NSString *convertJavaString(jstring javaString) {
 
 -(void) executeQuery:(NSString *)queryText {
     const char *q = [queryText UTF8String];
-    execute_query(q);
+    jobject resultSet = execute_query(q);
 }
 
 @end
